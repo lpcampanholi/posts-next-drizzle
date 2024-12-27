@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1735325273475,
+      "tag": "0000_motionless_nomad",
+      "breakpoints": true
+    }
+  ]
+}
