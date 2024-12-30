@@ -2,8 +2,10 @@
 
 import CardUser from "@/components/CardUser";
 import Titulo from "@/components/Titulo";
+import UserForm from "@/components/UserForm";
 import { deleteUserFromAPI, fetchUsers } from "@/services/users";
 import { useEffect, useState } from "react";
+import PuffLoader from "react-spinners/PuffLoader";
 
 export default function UsersPage() {
 
@@ -24,6 +26,10 @@ export default function UsersPage() {
         }
     }
 
+    async function criarUsuario() {
+        
+    }
+
     async function excluirUsuario(id: number) {
         setIsLoading(true);
         try {
@@ -38,13 +44,16 @@ export default function UsersPage() {
         <div>
             <Titulo>Users</Titulo>
             {isLoading ? (
-                <p>Carregando...</p>
+                <PuffLoader
+                    color="#00baff"
+                    size={60}
+                />
             ) : (
                 users.map(user => (
                     <CardUser key={user.id} user={user} onDelete={excluirUsuario} />
                 ))
             )}
-            <Titulo>Create new User</Titulo>
+            <UserForm />
         </div>
     );
 }

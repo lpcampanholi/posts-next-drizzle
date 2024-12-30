@@ -11,6 +11,16 @@ export async function fetchUsers(): Promise<User[]> {
     }
 }
 
+export async function createUserToAPI(user: User): Promise<void> {
+    const response = await fetch("/users/api", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    });
+}
+
 export async function deleteUserFromAPI(id: number): Promise<void> {
     try {
         const response = await fetch(`/users/${id}`, { method: "DELETE" });

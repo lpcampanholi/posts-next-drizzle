@@ -5,7 +5,7 @@ interface CardUserProps {
 
 export default function CardUser({ user, onDelete }: CardUserProps) {
     return (
-        <div className=" bg-neutral-900 flex items-center justify-between my-2 p-2 w-[50%] border-solid border border-sky-500 rounded-xl">
+        <div className="flex items-center justify-between my-2 p-2 w-[50%] border-solid border border-sky-700 rounded-xl">
             <div>
                 <h2 className="text-xl">{user.name}</h2>
                 <p>{user.email}</p>

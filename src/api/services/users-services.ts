@@ -7,6 +7,10 @@ export async function getAllUsers(): Promise<User[]> {
     return allUsers;
 }
 
+export async function createUser({ name, email }: User) {
+    await db.insert(users).values({ name: name, email: email });
+}
+
 export async function deleteUser(id: number): Promise<void> {
     await db.delete(users).where(eq(users.id, id));
 }
