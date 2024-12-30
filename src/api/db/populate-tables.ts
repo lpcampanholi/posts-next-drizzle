@@ -12,15 +12,49 @@ Aenean vel velit eget neque ultricies interdum. Cras velit nisi, bibendum et leo
 
 Sed in quam eu nisi commodo fringilla. Morbi pharetra id ligula ut vulputate. Morbi pulvinar dolor odio, sit amet maximus dui porta id. Etiam sem orci, molestie ut dignissim et, cursus tincidunt justo. Nulla facilisi. Fusce a convallis sapien, ut iaculis ligula. Maecenas eleifend fermentum diam ut commodo. Aliquam vitae mauris sapien. Quisque in neque et dolor sollicitudin auctor id sed lorem. Nunc cursus imperdiet molestie. Vestibulum interdum dui non massa iaculis semper.`
 
+
+function generateRandomTitle(): string {
+    const words = [
+        "Amazing", "Incredible", "Fantastic", "Mysterious", "Wonderful",
+        "Exciting", "Beautiful", "Curious", "Marvelous", "Spectacular"
+    ];
+    const subjects = [
+        "Journey", "Discovery", "Adventure", "Story", "Tale",
+        "Vision", "Dream", "Path", "Experience", "Moment"
+    ];
+    return `${words[Math.floor(Math.random() * words.length)]} ${subjects[Math.floor(Math.random() * subjects.length)]}`;
+}
+
 export async function insertUsers() {
-    for (let i = 1; i <= 20; i++) {
-        await db.insert(users).values({ name: "name", age: Math.random() * 80 + 1, email: `mail${i}@mail.com` })
-    }
+    await db.insert(users).values([
+        { name: "John Clark", email: "user874@example.com" },
+        { name: "Diana Johnson", email: "user136@example.com" },
+        { name: "Jane Lewis", email: "user409@example.com" },
+        { name: "John Walker", email: "user651@example.com" },
+        { name: "Alice Clark", email: "user618@testmail.com" },
+        { name: "Hank Anderson", email: "user975@demo.net" },
+        { name: "John Taylor", email: "user944@example.com" },
+        { name: "Charlie Clark", email: "user398@example.com" },
+        { name: "Hank Anderson", email: "user308@random.org" },
+        { name: "Eve Taylor", email: "user217@example.com" },
+        { name: "Diana Young", email: "user723@random.org" },
+        { name: "Charlie Lewis", email: "user881@random.org" },
+        { name: "Hank Smith", email: "user237@example.com" },
+        { name: "Bob Anderson", email: "user364@random.org" },
+        { name: "Diana Walker", email: "user780@testmail.com" },
+        { name: "Hank Taylor", email: "user186@testmail.com" },
+        { name: "Hank Lewis", email: "user115@testmail.com" },
+        { name: "Grace Johnson", email: "user375@random.org" },
+        { name: "Hank Smith", email: "user915@random.org" },
+        { name: "Eve Taylor", email: "user66@random.org" }
+    ]
+    )
 }
 
 export async function insertPosts() {
     for (let i = 1; i <= 100; i++) {
         await db.insert(posts).values({
+            title: generateRandomTitle(),
             content: `${lorem} ${i}`,
             authorId: Math.floor(Math.random() * 20 + 1),
         })

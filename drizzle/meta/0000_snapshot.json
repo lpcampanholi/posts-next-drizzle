@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "84565c43-0b9e-4f4c-a4c5-745ccbeb5244",
+  "id": "8393a98b-26ee-4c3d-94e6-7be174e3c229",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "posts": {
@@ -13,6 +13,13 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         },
         "content": {
           "name": "content",
@@ -55,13 +62,6 @@
         "name": {
           "name": "name",
           "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "age": {
-          "name": "age",
-          "type": "int",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
