@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Cabecalho from "@/components/Cabecalho";
 import Rodape from "@/components/Rodape";
+import BarraSuperior from "@/components/BarraSuperior";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,12 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
       >
-        <Cabecalho />
-        <main className="p-4">
+        <BarraSuperior />
+        <main className="p-4 h-full">
           {children}
         </main>
         <Rodape />

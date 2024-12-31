@@ -12,7 +12,7 @@ export default function UserForm() {
         <>
             <Titulo>Create new User</Titulo>
             <form>
-                <div className="flex flex-col gap-4 w-[35%]">
+                <div className="flex flex-col gap-4 w-[50%]">
                     <input
                         className="p-2 bg-neutral-900"
                         type="text"

@@ -26,10 +26,6 @@ export default function UsersPage() {
         }
     }
 
-    async function criarUsuario() {
-        
-    }
-
     async function excluirUsuario(id: number) {
         setIsLoading(true);
         try {
@@ -41,8 +37,8 @@ export default function UsersPage() {
     }
 
     return (
-        <div>
-            <Titulo>Users</Titulo>
+        <div className="flex flex-col items-center">
+            <button className="bg-blue-500 p-2">New User</button>
             {isLoading ? (
                 <PuffLoader
                     color="#00baff"
@@ -50,10 +46,13 @@ export default function UsersPage() {
                 />
             ) : (
                 users.map(user => (
-                    <CardUser key={user.id} user={user} onDelete={excluirUsuario} />
+                    <CardUser
+                        key={user.id}
+                        user={user}
+                        onDelete={excluirUsuario}
+                    />
                 ))
             )}
-            <UserForm />
         </div>
     );
 }

@@ -5,15 +5,15 @@ interface CardUserProps {
 
 export default function CardUser({ user, onDelete }: CardUserProps) {
     return (
-        <div className="flex items-center justify-between my-2 p-2 w-[50%] border-solid border border-sky-700 rounded-xl">
-            <div>
-                <h2 className="text-xl">{user.name}</h2>
+        <div className="flex items-center justify-between border-b border-neutral-700 p-2 w-[60%] ">
+            <div className="flex gap-4">
+                <p className="text-strong font-bold">{user.name}</p>
                 <p>{user.email}</p>
             </div>
             <div className="flex gap-4">
-                <button className="hover:underline">Editar</button>
+                <button className="bg-yellow-600 border-yellow-900 border-[1px] px-1 rounded-sm">Editar</button>
                 <button
-                    className="hover:underline"
+                    className="bg-red-900 border-red-950 border-[1px] px-1 rounded-sm"
                     onClick={() => onDelete(user.id)}
                 >Excluir
                 </button>
@@ -21,3 +21,6 @@ export default function CardUser({ user, onDelete }: CardUserProps) {
         </div>
     );
 }
+
+
+// border-solid border border-sky-700 rounded-xl
