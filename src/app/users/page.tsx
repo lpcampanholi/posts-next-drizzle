@@ -33,7 +33,7 @@ export default function UsersPage() {
   }
 
   return (
-    <div>
+    <>
       <div className="p-6 max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold">Users</h1>
 
@@ -58,52 +58,32 @@ export default function UsersPage() {
           </Dialog>
         </div>
 
+
+
         <div className="border rounded-lg p-2">
-          <Dialog>
-            <Table >
-              <TableHeader>
-                <TableRow>
-                  <TableHead>ID</TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                </TableRow>
-              </TableHeader>
+          <Table >
+            <TableHeader>
+              <TableRow>
+                <TableHead>ID</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Email</TableHead>
+              </TableRow>
+            </TableHeader>
+            <Dialog>
               <TableBody>
                 {users.map(user => (
-                  <TableRow key={user.id}>
-                    <TableCell>{user.id}</TableCell>
-                    <TableCell>{user.name}</TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell>
-                      <div className="flex gap-4">
-                        <DialogTrigger asChild>
-                          <Pencil
-                            className="text-neutral-800 transition duration-300 ease-in-out hover:scale-110 hover:text-blue-600 hover:cursor-pointer"
-                            size={18}
-                          />
-                        </DialogTrigger>
-                        <UserModal user={user} />
-                        <AlertDialog>
-                          <AlertDialogTrigger>
-                            <Trash
-                              className="text-neutral-800 transition duration-300 ease-in-out hover:scale-110 hover:text-red-600 hover:cursor-pointer"
-                              size={18}
-                            />
-                          </AlertDialogTrigger>
-                          <PromptUser onConfirm={() => handleDeleteUser(user.id)} />
-                        </AlertDialog>
-                      </div>
-                    </TableCell>
-                  </TableRow>
+                  <TableRowUser />
+                  
+
                 ))}
               </TableBody>
-            </Table>
-          </Dialog>
+            </Dialog>
+          </Table>
         </div>
 
         <UserPagination />
 
       </div>
-    </div>
+    </>
   );
 }
