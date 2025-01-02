@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Cabecalho from "@/components/Cabecalho";
 import Rodape from "@/components/Rodape";
-import BarraSuperior from "@/components/BarraSuperior";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +28,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
       >
-        <BarraSuperior />
         <main className="p-4 h-full">
           {children}
         </main>

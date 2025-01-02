@@ -11,8 +11,8 @@ export async function fetchUsers(): Promise<User[]> {
     }
 }
 
-export async function createUserToAPI(user: User): Promise<void> {
-    const response = await fetch("/users/api", {
+export async function createUserToAPI(user: UserDTO): Promise<void> {
+    await fetch("/users/api", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

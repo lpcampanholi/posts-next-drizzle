@@ -7,8 +7,8 @@ export async function getAllUsers(): Promise<User[]> {
     return allUsers;
 }
 
-export async function createUser({ name, email }: User) {
-    await db.insert(users).values({ name: name, email: email });
+export async function createUser({ name, email }: UserDTO) {
+    await db.insert(users).values({ name, email });
 }
 
 export async function deleteUser(id: number): Promise<void> {
