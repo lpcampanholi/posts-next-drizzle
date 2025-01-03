@@ -1,8 +1,9 @@
 import db from "./connection"
 import { posts } from "./schema/posts"
 import { users } from "./schema/users"
+import { users500 } from "./users500";
 
-const lorem:string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce malesuada mi nisi, ac gravida orci pretium vitae. Sed tincidunt lacus ut nulla ultricies, sed semper massa varius. Proin urna nisi, volutpat vel blandit tempor, pulvinar vitae tortor. Aenean vel mauris a quam ornare rhoncus sed id tellus. Duis euismod non velit non fermentum. Mauris orci nisl, sodales eu magna sed, convallis efficitur sem. Nulla vitae nisl ac magna convallis malesuada at ut massa. Curabitur vulputate aliquam eros eget tempus. Fusce eu nulla luctus, ultrices elit at, congue augue. Proin dolor sapien, feugiat eget dictum in, rhoncus a mi. Praesent vestibulum tortor eu sem eleifend, nec porta magna ultricies. Donec hendrerit, dui ut placerat suscipit, purus quam laoreet ante, quis tempor justo ipsum vel elit. Mauris dictum pharetra molestie. Vivamus et ultrices lorem. Mauris ex arcu, placerat ac ultrices nec, blandit cursus nisi. Duis vehicula nulla a risus euismod, vel imperdiet justo lacinia.
+const lorem: string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce malesuada mi nisi, ac gravida orci pretium vitae. Sed tincidunt lacus ut nulla ultricies, sed semper massa varius. Proin urna nisi, volutpat vel blandit tempor, pulvinar vitae tortor. Aenean vel mauris a quam ornare rhoncus sed id tellus. Duis euismod non velit non fermentum. Mauris orci nisl, sodales eu magna sed, convallis efficitur sem. Nulla vitae nisl ac magna convallis malesuada at ut massa. Curabitur vulputate aliquam eros eget tempus. Fusce eu nulla luctus, ultrices elit at, congue augue. Proin dolor sapien, feugiat eget dictum in, rhoncus a mi. Praesent vestibulum tortor eu sem eleifend, nec porta magna ultricies. Donec hendrerit, dui ut placerat suscipit, purus quam laoreet ante, quis tempor justo ipsum vel elit. Mauris dictum pharetra molestie. Vivamus et ultrices lorem. Mauris ex arcu, placerat ac ultrices nec, blandit cursus nisi. Duis vehicula nulla a risus euismod, vel imperdiet justo lacinia.
 
 Vestibulum vitae fringilla diam. Fusce bibendum tempor nisi, et vehicula diam feugiat eget. Curabitur fermentum sem a nisi porttitor vehicula. Nunc nec tempus erat, a posuere arcu. Pellentesque id ultrices odio. Donec facilisis neque a sem luctus feugiat. Morbi luctus rhoncus mi, a porta purus bibendum vitae.
 
@@ -26,30 +27,7 @@ function generateRandomTitle(): string {
 }
 
 export async function insertUsers() {
-    await db.insert(users).values([
-        { name: "John Clark", email: "user874@example.com" },
-        { name: "Diana Johnson", email: "user136@example.com" },
-        { name: "Jane Lewis", email: "user409@example.com" },
-        { name: "John Walker", email: "user651@example.com" },
-        { name: "Alice Clark", email: "user618@testmail.com" },
-        { name: "Hank Anderson", email: "user975@demo.net" },
-        { name: "John Taylor", email: "user944@example.com" },
-        { name: "Charlie Clark", email: "user398@example.com" },
-        { name: "Hank Anderson", email: "user308@random.org" },
-        { name: "Eve Taylor", email: "user217@example.com" },
-        { name: "Diana Young", email: "user723@random.org" },
-        { name: "Charlie Lewis", email: "user881@random.org" },
-        { name: "Hank Smith", email: "user237@example.com" },
-        { name: "Bob Anderson", email: "user364@random.org" },
-        { name: "Diana Walker", email: "user780@testmail.com" },
-        { name: "Hank Taylor", email: "user186@testmail.com" },
-        { name: "Hank Lewis", email: "user115@testmail.com" },
-        { name: "Grace Johnson", email: "user375@random.org" },
-        { name: "Hank Smith", email: "user915@random.org" },
-        { name: "Eve Taylor", email: "user66@random.org" }
-    ]
-    )
-}
+    await db.insert(users).values(users500)}
 
 export async function insertPosts() {
     for (let i = 1; i <= 100; i++) {
@@ -63,6 +41,6 @@ export async function insertPosts() {
 
 (async () => {
     await insertUsers();
-    await insertPosts();
+    // await insertPosts();
     console.log("Tabelas populadas");
 })();
