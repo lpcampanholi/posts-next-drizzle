@@ -1,6 +1,5 @@
 "use client";
 
-import Titulo from "@/components/Titulo";
 import { fetchPosts } from "@/services/posts";
 import { useEffect, useState } from "react";
 
@@ -18,7 +17,7 @@ export default function PostsPage() {
 
     return (
         <div>
-            <Titulo>Posts</Titulo>
+            <h1>Posts</h1>
             {posts.map(post => (
                 <div key={post.id}>
                     <h2>{`Post ${post.id}`}</h2>

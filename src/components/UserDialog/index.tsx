@@ -5,20 +5,11 @@ import { Button } from "../ui/button";
 import { DialogClose, DialogContent, DialogDescription, DialogFooter, DialogTitle } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { createUserToAPI } from "@/services/users";
 
 export default function UserDialog({ user }: { user?: User }) {
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-
-  async function submitForm(name: string, email: string) {
-    const user: UserDTO = {
-      name,
-      email
-    }
-    await createUserToAPI(user);
-  }
 
   useEffect(() => {
     if (user) {
@@ -31,7 +22,7 @@ export default function UserDialog({ user }: { user?: User }) {
     <DialogContent>
       <DialogTitle>New User</DialogTitle>
       <DialogDescription>Create a new user in the system</DialogDescription>
-      <form onSubmit={() => submitForm(name, email)} className="space-y-6">
+      {/* <form onSubmit={() => submitForm(name, email)} className="space-y-6"> */}
         <div className="grid grid-cols-4 items-center text-right gap-4">
           <Label htmlFor="name">Name</Label>
           <Input
@@ -58,7 +49,7 @@ export default function UserDialog({ user }: { user?: User }) {
           </DialogClose>
           <Button type="submit">Salvar</Button>
         </DialogFooter>
-      </form>
+      {/* </form> */}
     </DialogContent>
   );
 }

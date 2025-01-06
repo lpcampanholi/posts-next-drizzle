@@ -1,7 +1,7 @@
 import db from "./connection"
 import { posts } from "./schema/posts"
 import { users } from "./schema/users"
-import { users500 } from "./users500";
+import { users10 } from "./users10";
 
 const lorem: string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce malesuada mi nisi, ac gravida orci pretium vitae. Sed tincidunt lacus ut nulla ultricies, sed semper massa varius. Proin urna nisi, volutpat vel blandit tempor, pulvinar vitae tortor. Aenean vel mauris a quam ornare rhoncus sed id tellus. Duis euismod non velit non fermentum. Mauris orci nisl, sodales eu magna sed, convallis efficitur sem. Nulla vitae nisl ac magna convallis malesuada at ut massa. Curabitur vulputate aliquam eros eget tempus. Fusce eu nulla luctus, ultrices elit at, congue augue. Proin dolor sapien, feugiat eget dictum in, rhoncus a mi. Praesent vestibulum tortor eu sem eleifend, nec porta magna ultricies. Donec hendrerit, dui ut placerat suscipit, purus quam laoreet ante, quis tempor justo ipsum vel elit. Mauris dictum pharetra molestie. Vivamus et ultrices lorem. Mauris ex arcu, placerat ac ultrices nec, blandit cursus nisi. Duis vehicula nulla a risus euismod, vel imperdiet justo lacinia.
 
@@ -27,20 +27,21 @@ function generateRandomTitle(): string {
 }
 
 export async function insertUsers() {
-    await db.insert(users).values(users500)}
+    await db.insert(users).values(users10);
+}
 
 export async function insertPosts() {
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 10; i++) {
         await db.insert(posts).values({
             title: generateRandomTitle(),
             content: `${lorem} ${i}`,
             authorId: Math.floor(Math.random() * 20 + 1),
-        })
+        });
     }
 }
 
 (async () => {
     await insertUsers();
-    // await insertPosts();
+    await insertPosts();
     console.log("Tabelas populadas");
 })();

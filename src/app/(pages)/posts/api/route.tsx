@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/api/services/posts-services";
+import { getAllPosts } from "@/api/services/postsServices";
 
 export async function GET() {
     const posts = await getAllPosts();

@@ -21,6 +21,16 @@ export async function createUserToAPI(user: UserDTO): Promise<void> {
     });
 }
 
+export async function updateUserToApi(user: User): Promise<void> {
+    await fetch("/users/api", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    });
+}
+
 export async function deleteUserFromAPI(id: number): Promise<void> {
     try {
         const response = await fetch(`/users/${id}`, { method: "DELETE" });
