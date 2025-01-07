@@ -1,14 +1,14 @@
 import { Plus } from "lucide-react";
 import { Button } from "../ui/button";
-import { DialogTrigger } from "../ui/dialog";
+import { useUsers } from "@/hooks/useUsers";
 
 export default function NewUserButton() {
+  const { setUserDialogOpen } = useUsers()
+  
   return (
-    <DialogTrigger asChild>
-      <Button>
-        <Plus />
-        New User
-      </Button>
-    </DialogTrigger>
+    <Button onClick={() => setUserDialogOpen(true)}>
+      <Plus />
+      New User
+    </Button>
   );
 }

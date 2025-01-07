@@ -4,7 +4,6 @@ import { Table, TableBody, TableHeader, TableCell, TableHead, TableRow } from ".
 
 export default function SkeletonTable() {
   return (
-
     <div className="rounded-md border my-4">
       <Table>
         <TableHeader>
@@ -17,7 +16,7 @@ export default function SkeletonTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {[...Array(3)].map((_, index) => (
+          {[...Array(10)].map((_, index) => (
             <TableRow key={index} >
               {columns.map((_, cellIndex) => (
                 <TableCell key={cellIndex}>

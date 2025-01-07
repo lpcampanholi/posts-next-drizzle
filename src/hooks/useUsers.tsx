@@ -5,13 +5,14 @@ import { deleteUserFromAPI, fetchUsers, updateUserToApi } from "@/services/users
 import { useContext } from "react";
 
 export function useUsers() {
-
     const {
         users,
         setUsers,
         selectedUser,
         setSelectedUser,
-        isLoading
+        isLoading,
+        userDialogOpen,
+        setUserDialogOpen
     } = useContext(UsersContext);
 
     async function refreshUsers() {
@@ -37,5 +38,7 @@ export function useUsers() {
         selectedUser,
         setSelectedUser,
         isLoading,
+        userDialogOpen,
+        setUserDialogOpen
     }
 }
