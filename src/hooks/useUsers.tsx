@@ -6,7 +6,13 @@ import { useContext } from "react";
 
 export function useUsers() {
 
-    const { users, setUsers, selectedUser, setSelectedUser } = useContext(UsersContext);
+    const {
+        users,
+        setUsers,
+        selectedUser,
+        setSelectedUser,
+        isLoading
+    } = useContext(UsersContext);
 
     async function refreshUsers() {
         const usersFromApi = await fetchUsers();
@@ -30,5 +36,6 @@ export function useUsers() {
         deleteUser,
         selectedUser,
         setSelectedUser,
+        isLoading,
     }
 }

@@ -54,6 +54,7 @@ export default function UserDialog({ user, onClose }: UserDialogProps) {
             type="text"
             id="name"
             value={name}
+            required
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -64,12 +65,13 @@ export default function UserDialog({ user, onClose }: UserDialogProps) {
             type="email"
             id="email"
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">Cancelar</Button>
+            <Button variant="outline" onClick={() => onClose()}>Cancelar</Button>
           </DialogClose>
           <DialogClose asChild>
             <Button type="submit">Salvar</Button>
