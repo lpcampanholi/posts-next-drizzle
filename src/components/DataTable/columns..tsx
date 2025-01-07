@@ -1,6 +1,6 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "../ui/button";
 import EditAndDeleteButtons from "../EditAndDeleteButtons";
@@ -50,9 +50,10 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     id: "actions",
-    cell: () => {
+    cell: ({ row }) => {
+      const user = row.original;
       return (
-        <EditAndDeleteButtons />
+        <EditAndDeleteButtons user={user} />
       )
     },
   },

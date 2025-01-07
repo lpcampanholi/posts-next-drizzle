@@ -1,6 +1,6 @@
 export async function fetchUsers(): Promise<User[]> {
     try {
-        const response = await fetch("/users/api");
+        const response = await fetch("/api/users");
         if (!response.ok) {
             throw new Error("Erro ao buscar usuários");
         }
@@ -12,7 +12,7 @@ export async function fetchUsers(): Promise<User[]> {
 }
 
 export async function createUserToAPI(user: UserDTO): Promise<void> {
-    await fetch("/users/api", {
+    await fetch("/api/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -21,8 +21,8 @@ export async function createUserToAPI(user: UserDTO): Promise<void> {
     });
 }
 
-export async function updateUserToApi(user: User): Promise<void> {
-    await fetch("/users/api", {
+export async function updateUserToApi(id: number, user: UserDTO): Promise<void> {
+    await fetch(`/api/users/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -33,7 +33,7 @@ export async function updateUserToApi(user: User): Promise<void> {
 
 export async function deleteUserFromAPI(id: number): Promise<void> {
     try {
-        const response = await fetch(`/users/${id}`, { method: "DELETE" });
+        const response = await fetch(`/api/users/${id}`, { method: "DELETE" });
         if (!response.ok) {
             throw new Error("Erro ao excluir usuário");
         }

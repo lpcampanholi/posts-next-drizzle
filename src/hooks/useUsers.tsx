@@ -1,38 +1,34 @@
 "use client";
 
-import { UsersContext } from "@/app/contexts/UserContext";
-import { createUserToAPI, deleteUserFromAPI, fetchUsers, updateUserToApi } from "@/services/users";
+import { UsersContext } from "@/app/contexts/user-context";
+import { deleteUserFromAPI, fetchUsers, updateUserToApi } from "@/services/users-services";
 import { useContext } from "react";
 
-export function useUsersContext() {
+export function useUsers() {
 
-    const { users, setUsers } = useContext(UsersContext);
+    const { users, setUsers, selectedUser, setSelectedUser } = useContext(UsersContext);
 
-    async function handleFetchUsers() {
+    async function refreshUsers() {
         const usersFromApi = await fetchUsers();
         setUsers(usersFromApi);
     }
 
-    async function handleAddUser(user: UserDTO) {
-        await createUserToAPI(user);
-        await handleFetchUsers();
+    async function updateUser(id: number, user: UserDTO) {
+        await updateUserToApi(id, user);
+        await refreshUsers();
     }
 
-    async function handleUpdateUser(user: User) {
-        await updateUserToApi(user);
-        await handleFetchUsers();
-    }
-
-    async function handleDeleteUser(id: number) {
+    async function deleteUser(id: number) {
         await deleteUserFromAPI(id);
-        await handleFetchUsers();
+        await refreshUsers();
     }
 
     return {
         users,
-        handleFetchUsers,
-        handleAddUser,
-        handleUpdateUser,
-        handleDeleteUser
+        refreshUsers,
+        updateUser,
+        deleteUser,
+        selectedUser,
+        setSelectedUser,
     }
 }

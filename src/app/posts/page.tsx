@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchPosts } from "@/services/posts";
+import { fetchPosts } from "@/services/posts-services";
 import { useEffect, useState } from "react";
 
 export default function PostsPage() {

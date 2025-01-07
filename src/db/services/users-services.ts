@@ -1,6 +1,11 @@
 import { eq } from "drizzle-orm";
-import db from "../db/connection";
-import { users } from "../db/schema/users";
+import db from "../connection";
+import { users } from "../schema/users";
+
+export async function getOneUser(id: number): Promise<User[]> {
+    const user = await db.select().from(users).where(eq(users.id, id));
+    return user;
+}
 
 export async function getAllUsers(): Promise<User[]> {
     const allUsers = await db.select().from(users);
@@ -11,7 +16,7 @@ export async function createUser({ name, email }: UserDTO) {
     await db.insert(users).values({ name, email });
 }
 
-export async function updateUser({ id, name, email }: User) {
+export async function updateUser(id: number, { name, email }: UserDTO) {
     await db.update(users).set({ name, email }).where(eq(users.id, id));
 }
 
