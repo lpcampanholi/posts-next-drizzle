@@ -38,11 +38,11 @@ export default function UserDialog({ user, onClose }: UserDialogProps) {
     event.preventDefault();
     if (user) {
       await updateUser(user.id, { name, email })
-      await refreshUsers();
     } else {
       const newUser = { name, email };
       await createUserToAPI(newUser);
     }
+    await refreshUsers();
     clearForm();
   }
 
@@ -50,6 +50,7 @@ export default function UserDialog({ user, onClose }: UserDialogProps) {
     setName("");
     setEmail("");
     onClose();
+    setUserDialogOpen(false);
   }
 
   return (
@@ -83,12 +84,8 @@ export default function UserDialog({ user, onClose }: UserDialogProps) {
             />
           </div>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline" onClick={() => clearForm()}>Cancelar</Button>
-            </DialogClose>
-            <DialogClose asChild>
-              <Button type="submit">Salvar</Button>
-            </DialogClose>
+            <Button variant="outline" onClick={() => clearForm()}>Cancelar</Button>
+            <Button type="submit">Salvar</Button>
           </DialogFooter>
         </form>
       </DialogContent>
